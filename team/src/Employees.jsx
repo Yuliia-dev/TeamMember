@@ -5,10 +5,12 @@ import femaleProfile from './images/femaleProfile.jpg'
 
 const Employees = () => {
   const [employees, setEmployees] = useState(team)
-  console.log(employees)
+
   return (
-    <main>
-          {employees.map((employee) => (
+    <main className="container">
+      <div class="row ">
+        <div class=" col-8">
+      {employees.map((employee) => (
         <div key={employee.id}>
           <p>{employee.fullName}</p>
           {employee.gender === 'male' ? (
@@ -17,7 +19,7 @@ const Employees = () => {
             <img src={femaleProfile} alt="Female Profile" />
           )}
         </div>
-      ))}
+      ))}</div></div>
     </main>
   );
 };
