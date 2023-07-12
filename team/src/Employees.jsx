@@ -1,26 +1,18 @@
-import { useState } from "react";
-import team from "./team.json";
 import maleProfile from "./images/maleProfile.jpg";
 import femaleProfile from "./images/femaleProfile.jpg";
 
-const Employees = () => {
-  const [selectedTeam, setSelectedTeam] = useState("TeamB");
-  const [employees, setEmployees] = useState(team);
+const Employees = ({employees, selectedTeam, handleTeamSelection, handleEmployeeCardClick}) => {
+  // const [selectedTeam, setSelectedTeam] = useState("TeamB");
+  // const [employees, setEmployees] = useState(team);
 
-  function handleTeamSelection(event) {
-    setSelectedTeam(event.target.value);
-  }
+  // function handleTeamSelection(event) {
+  //   setSelectedTeam(event.target.value);
+  // }
 
-  function handleEmployeeCardClick(event) {
-    const transformedEmployees = employees.map((employee) =>
-      employee.id === parseInt(event.currentTarget.id)
-        ? employee.teamName === selectedTeam
-          ? { ...employee, teamName: '' }
-          : { ...employee, teamName: selectedTeam }
-        : employee
-    );
-    setEmployees(transformedEmployees);
-  }
+  // function handleEmployeeCardClick(event) {
+  //   const transformedEmployees = employees.map((employee)=>employee.id===parseInt(event.currentTarget.id)?(employee.teamName===selectedTeam)?{...employee, teamName:''}:{...employee, teamName: selectedTeam}:employee)
+  //   setEmployees(transformedEmployees);
+  // }
 
   return (
     <main className="container">
@@ -50,7 +42,7 @@ const Employees = () => {
                     : "card m-2"
                 )}
                 style={{ cursor: "pointer" }}
-                onClick={handleEmployeeCardClick}
+                 onClick={(event) => handleEmployeeCardClick(event, employee.id)}
               >
                 {employee.gender === "male" ? (
                   <img
