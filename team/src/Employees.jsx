@@ -2,22 +2,11 @@ import maleProfile from "./images/maleProfile.jpg";
 import femaleProfile from "./images/femaleProfile.jpg";
 
 const Employees = ({employees, selectedTeam, handleTeamSelection, handleEmployeeCardClick}) => {
-  // const [selectedTeam, setSelectedTeam] = useState("TeamB");
-  // const [employees, setEmployees] = useState(team);
-
-  // function handleTeamSelection(event) {
-  //   setSelectedTeam(event.target.value);
-  // }
-
-  // function handleEmployeeCardClick(event) {
-  //   const transformedEmployees = employees.map((employee)=>employee.id===parseInt(event.currentTarget.id)?(employee.teamName===selectedTeam)?{...employee, teamName:''}:{...employee, teamName: selectedTeam}:employee)
-  //   setEmployees(transformedEmployees);
-  // }
 
   return (
     <main className="container">
-      <div class="row justify-content-center mt-3 mb-3">
-        <div class="col-6">
+      <div className="row justify-content-center mt-3 mb-3">
+        <div className="col-6">
           <select
             className="form-select form-select-lg"
             value={selectedTeam}
@@ -30,9 +19,9 @@ const Employees = ({employees, selectedTeam, handleTeamSelection, handleEmployee
           </select>
         </div>
       </div>
-      <div class="row justify-content-center mt-3 mb-3">
-        <div class="col-8">
-          <div class="card-collection">
+      <div className="row justify-content-center mt-3 mb-3">
+        <div className="col-8">
+          <div className="card-collection">
             {employees.map((employee) => (
               <div
                 key={employee.id}
@@ -58,7 +47,7 @@ const Employees = ({employees, selectedTeam, handleTeamSelection, handleEmployee
                   />
                 )}
                 <div className="card-body">
-                  <h5 className="card-title">Full name: {employee.fullName}</h5>
+                  <h5 className="card-title"> {employee.fullName}</h5>
                   <p className="card-text">
                     <b>Designation:</b> {employee.designation}
                   </p>

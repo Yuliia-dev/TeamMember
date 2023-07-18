@@ -2,12 +2,23 @@ import "./App.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import Employees from "./Employees";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import team from "./team.json";
 
 export default function App() {
-  const [selectedTeam, setSelectedTeam] = useState("TeamB");
-  const [employees, setEmployees] = useState(team);
+  const [selectedTeam, setSelectedTeam] = useState(
+    JSON.parse(localStorage.getItem("selectedTeam")) || "TeamA"
+  );
+  const [employees, setEmployees] = useState(
+    JSON.parse(localStorage.getItem("employeesList")) || team
+  );
+  useEffect(() => {
+    localStorage.setItem("employeesList", JSON.stringify(employees));
+  }, [employees]);
+
+  useEffect(() => {
+    localStorage.setItem("selectedTeam", JSON.stringify(selectedTeam));
+  }, [selectedTeam]);
 
   function handleTeamSelection(event) {
     setSelectedTeam(event.target.value);
