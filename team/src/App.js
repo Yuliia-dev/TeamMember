@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Employees from "./Employees";
 import GroupedTeamMembers from "./GroupedTeamMembers";
 import Nav from "./Nav";
+import NotFound from "./NotFound";
 import { useState, useEffect } from "react";
 import team from "./team.json";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -47,7 +48,7 @@ export default function App() {
           employees.filter((employee) => employee.teamName === selectedTeam)
             .length
         }
-      />{" "}
+      />
       <Routes
         path="/"
         element={
@@ -74,6 +75,7 @@ export default function App() {
           path="/GroupedTeamMembers"
           element={<GroupedTeamMembers />}
         ></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
       <Footer />
     </Router>
