@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const GroupedTeamMembers = ({ employees, selectedTeam, setTeam }) => {
-  const [groupedEmployees, setGroupedEmployees] = useState(groupTeamMembers());
+  const [groupedEmployees, setGroupedEmployees] = useState(groupTeamMembers);
 
   function groupTeamMembers() {
     const teams = [];
@@ -51,9 +51,13 @@ const GroupedTeamMembers = ({ employees, selectedTeam, setTeam }) => {
 
   function handleTeamClick(event) {
 
-    const transformedGroupData = groupedEmployees.map((groupedData) =>
-      groupedData.teamName === event.currentTarget.id ? (...groupedData.collapsed: !groupedData.collapsed): groupedData.collapsed);
-    setTeam(event.currentTarget.id)
+  const transformedGroupData = groupedEmployees.map((groupedData) =>
+      groupedData.teamName === event.currentTarget.id
+        ? { ...groupedData, collapsed: !groupedData.collapsed }
+        : groupedData
+    );
+    setGroupedEmployees(transformedGroupData);
+    setTeam(event.currentTarget.id);
   }
 
 
@@ -63,20 +67,20 @@ const GroupedTeamMembers = ({ employees, selectedTeam, setTeam }) => {
       {groupedEmployees.map((item) => {
         return (
           <div
-            key={item.team}
+            key={item.teamName}
             className="card mt-2"
             style={{ cursor: "pointer" }}
           >
             <h4
-              id={item.team}
+              id={item.teamName}
               className="card-header text-secondary bg-white"
               onClick={handleTeamClick}
             >
-              Team Name: {item.team}
+              Team Name: {item.teamName}
             </h4>
             <div
-              id={"collapse_" + item.team}
-              className={item.collapsed === true ? "collapsed" : ""}
+              id={"collapse_" + item.teamName}
+              className={item.collapsed === true ? "collapse" : ""}
             >
               <hr />
               {item.members.map((member) => {

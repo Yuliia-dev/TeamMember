@@ -1,4 +1,4 @@
-import "./App.css";
+import "../App.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import Employees from "./Employees";
@@ -6,16 +6,18 @@ import GroupedTeamMembers from "./GroupedTeamMembers";
 import Nav from "./Nav";
 import NotFound from "./NotFound";
 import { useState, useEffect } from "react";
-import team from "./team.json";
+import team from "../team.json";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export default function App() {
+  const [teamTe, setTeam] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(
     JSON.parse(localStorage.getItem("selectedTeam")) || "TeamA"
   );
   const [employees, setEmployees] = useState(
     JSON.parse(localStorage.getItem("employeesList")) || team
   );
+
   useEffect(() => {
     localStorage.setItem("employeesList", JSON.stringify(employees));
   }, [employees]);
