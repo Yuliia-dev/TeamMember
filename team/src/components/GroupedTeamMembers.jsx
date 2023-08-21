@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const GroupedTeamMembers = ({ employees, selectedTeam, setTeam }) => {
+const GroupedTeamMembers = ({ employees, selectedTeam, setSelectedTeam }) => {
   const [groupedEmployees, setGroupedEmployees] = useState(groupTeamMembers);
 
   function groupTeamMembers() {
@@ -57,7 +57,7 @@ const GroupedTeamMembers = ({ employees, selectedTeam, setTeam }) => {
         : groupedData
     );
     setGroupedEmployees(transformedGroupData);
-    setTeam(event.currentTarget.id);
+    setSelectedTeam(event.currentTarget.id);
   }
 
 

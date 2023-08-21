@@ -10,7 +10,7 @@ import team from "../team.json";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export default function App() {
-  const [teamTe, setTeam] = useState(null);
+  // const [teamTe, setTeam] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(
     JSON.parse(localStorage.getItem("selectedTeam")) || "TeamA"
   );
@@ -79,7 +79,7 @@ export default function App() {
             <GroupedTeamMembers
               employees={employees}
               selectedTeam={selectedTeam}
-              setTeam={setTeam}
+              setSelectedTeam={setSelectedTeam}
             />
           }
         ></Route>
