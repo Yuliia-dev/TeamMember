@@ -10,7 +10,6 @@ import team from "../team.json";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export default function App() {
-  // const [teamTe, setTeam] = useState(null);
   const [selectedTeam, setSelectedTeam] = useState(
     JSON.parse(localStorage.getItem("selectedTeam")) || "TeamA"
   );
@@ -46,6 +45,7 @@ export default function App() {
       <Nav />
       <Header
         selectedTeam={selectedTeam}
+        employees={employees}
         teamMemberCounts={
           employees.filter((employee) => employee.teamName === selectedTeam)
             .length

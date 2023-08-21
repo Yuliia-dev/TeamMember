@@ -88,7 +88,6 @@ const GroupedTeamMembers = ({ employees, selectedTeam, setSelectedTeam }) => {
                   <div className="mt-2">
                     <h5 className="card-title mt-2">
                       <span className="text-dark">
-                        {" "}
                         Full Name : {member.fullName}
                       </span>
                     </h5>
