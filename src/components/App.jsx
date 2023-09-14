@@ -48,20 +48,9 @@ export default function App() {
         employees={employees}
         teamMemberCounts={
           employees.filter((employee) => employee.teamName === selectedTeam)
-            .length
-        }
+            .length}
       />
-      <Routes
-        path="/"
-        element={
-          <Employees
-            employees={employees}
-            selectedTeam={selectedTeam}
-            handleTeamSelection={handleTeamSelection}
-            handleEmployeeCardClick={handleEmployeeCardClick}
-          />
-        }
-      >
+      <Routes>
         <Route
           path="/"
           element={
