@@ -1,13 +1,20 @@
+import React, { lazy, Suspense, useState, useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import Loader from "./Loader";
 import "../App.css";
-import Header from "./Header";
-import Footer from "./Footer";
-import Employees from "./Employees";
-import GroupedTeamMembers from "./GroupedTeamMembers";
 import Nav from "./Nav";
-import NotFound from "./NotFound";
-import { useState, useEffect } from "react";
 import team from "../team.json";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+
+const Header = lazy(() => import("./Header"));
+const Footer = lazy(() => import("./Footer"));
+const Employees = lazy(() => import("./Employees"));
+const GroupedTeamMembers = lazy(() => import("./GroupedTeamMembers"));
 
 export default function App() {
   const [selectedTeam, setSelectedTeam] = useState(
@@ -48,32 +55,36 @@ export default function App() {
         employees={employees}
         teamMemberCounts={
           employees.filter((employee) => employee.teamName === selectedTeam)
-            .length}
-      />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Employees
-              employees={employees}
-              selectedTeam={selectedTeam}
-              handleTeamSelection={handleTeamSelection}
-              handleEmployeeCardClick={handleEmployeeCardClick}
-            />
-          }
-        ></Route>
-        <Route
-          path="/GroupedTeamMembers"
-          element={
-            <GroupedTeamMembers
-              employees={employees}
-              selectedTeam={selectedTeam}
-              setSelectedTeam={setSelectedTeam}
-            />
-          }
-        ></Route>
-        <Route path="*" element={<NotFound />}></Route>
-      </Routes>
+            .length
+        }
+      />{" "}
+      <Suspense fallback={<Loader/>}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Employees
+                employees={employees}
+                selectedTeam={selectedTeam}
+                handleTeamSelection={handleTeamSelection}
+                handleEmployeeCardClick={handleEmployeeCardClick}
+              />
+            }
+            
+          ></Route>
+          <Route
+            path="/GroupedTeamMembers"
+            element={
+              <GroupedTeamMembers
+                employees={employees}
+                selectedTeam={selectedTeam}
+                setSelectedTeam={setSelectedTeam}
+              />
+            }
+          ></Route>
+          <Route path="*" element={<Navigate to="/" />}></Route>
+        </Routes>{" "}
+      </Suspense>
       <Footer />
     </Router>
   );
