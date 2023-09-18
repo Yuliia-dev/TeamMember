@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkteam_member=self.webpackChunkteam_member||[]).push([[642],{642:function(e,a,n){n.r(a);var r=n(184);a.default=function(){var e=new Date;return(0,r.jsx)("footer",{className:"container",children:(0,r.jsx)("div",{className:"row justify-content-center mt-3 mb-4",children:(0,r.jsx)("div",{className:"col-8",children:(0,r.jsxs)("h5",{children:["Team Member Allocation App - ",e.getFullYear()]})})})})}}}]);
+//# sourceMappingURL=642.84224537.chunk.js.map
